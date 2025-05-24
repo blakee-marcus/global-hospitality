@@ -2,6 +2,7 @@ import { useLocation, BrowserRouter as Router, Routes, Route } from 'react-route
 import { HelmetProvider } from 'react-helmet-async';
 import React from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { Analytics } from "@vercel/analytics/next"
 
 import About from './pages/About';
 import AreaOfExpertise from './pages/AreasOfExpertise';
@@ -44,6 +45,7 @@ function App() {
             <Route path='/contact' element={<Contact />} />
             <Route path='/gh-testimonials' element={<Testimonials />} />
           </Routes>
+          <Analytics />
         </AnimatePresence>
       </Router>
     </HelmetProvider>
