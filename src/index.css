@@ -1,0 +1,10 @@
+@config "../tailwind.config.js";
+@import 'tailwindcss';
+
+/* :root {
+  --brand: #809a4b;
+}
+
+.bg-brand {
+  background-color: var(--brand);
+} */
