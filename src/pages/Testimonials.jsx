@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const testimonials = [
   {
@@ -66,22 +66,59 @@ const testimonials = [
 
 function Testimonials() {
   return (
-    <section className='bg-white text-gray-800 px-6 py-20 max-w-5xl mx-auto'>
-      <h1 className='text-4xl font-serif font-bold text-brand mb-10 text-center'>
-        Client Testimonials
-      </h1>
+    <main className='bg-white text-gray-800 px-6 py-20 max-w-5xl mx-auto font-body'>
+      <Helmet>
+        <title>Hospitality Recruitment Testimonials | Global Hospitality</title>
+        <meta
+          name='description'
+          content='Discover what clients and candidates say about working with Global Hospitality. Read real testimonials from hospitality executives, chefs, and HR leaders.'
+        />
+        <meta
+          name='keywords'
+          content='hospitality recruiter reviews, Global Hospitality testimonials, executive search success stories, client feedback, chef placement reviews'
+        />
+        <meta property='og:title' content='Global Hospitality Testimonials' />
+        <meta
+          property='og:description'
+          content='Real feedback from hospitality clients and candidates who have worked with Global Hospitality executive search consultants.'
+        />
+        <meta property='og:url' content='https://globalhospitality.com/testimonials' />
+        <link rel='canonical' href='https://globalhospitality.com/testimonials' />
+        <script type='application/ld+json'>
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: 'Testimonials',
+            description:
+              'Read what hospitality clients and candidates are saying about Global Hospitality. Our executive recruitment services deliver results worldwide.',
+            review: testimonials.map((t) => ({
+              '@type': 'Review',
+              reviewBody: t.quote,
+              author: { '@type': 'Person', name: t.author },
+            })),
+          })}
+        </script>
+      </Helmet>
 
-      <div className='space-y-12'>
-        {testimonials.map(({ quote, author }, index) => (
-          <div
-            key={index}
-            className='bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition'>
-            <blockquote className='italic text-lg text-gray-700'>“{quote}”</blockquote>
-            <p className='mt-4 text-right font-medium text-brand'>– {author}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+      <section aria-labelledby='testimonials-heading'>
+        <h1
+          id='testimonials-heading'
+          className='text-4xl font-heading font-bold text-brand-primary mb-10 text-center'>
+          Client Testimonials
+        </h1>
+
+        <div className='space-y-12'>
+          {testimonials.map(({ quote, author }, index) => (
+            <div
+              key={index}
+              className='bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition'>
+              <blockquote className='italic text-lg text-gray-700'>“{quote}”</blockquote>
+              <p className='mt-4 text-right font-medium text-brand-primary'>– {author}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
 

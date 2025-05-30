@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const jobCategories = [
   {
@@ -129,64 +130,88 @@ const jobCategories = [
 
 function JobSearch() {
   return (
-    <section className='bg-white text-gray-800 px-6 py-20 max-w-6xl mx-auto'>
-      <h1 className='text-4xl font-serif font-bold text-brand mb-10 text-center'>
-        Positions We Recruit
-      </h1>
+    <main className='bg-white text-gray-800 px-6 py-20 max-w-6xl mx-auto font-body'>
+      <Helmet>
+        <title>Hospitality Jobs We Recruit | Global Hospitality Executive Search</title>
+        <meta
+          name='description'
+          content='Explore the hospitality management jobs Global Hospitality recruits for—from executive chef to general manager, hotel operations, finance, HR, marketing, and more.'
+        />
+        <meta
+          name='keywords'
+          content='hospitality jobs, hospitality executive search, hotel general manager jobs, executive chef jobs, resort management careers, restaurant recruiter, casino hospitality careers'
+        />
+        <meta property='og:title' content='Hospitality Positions We Recruit | Global Hospitality' />
+        <meta
+          property='og:description'
+          content='View a comprehensive list of hospitality roles we specialize in recruiting—from C-suite to operations, culinary, F&B, HR, sales, and beyond.'
+        />
+        <meta property='og:url' content='https://globalhospitality.com/job-search' />
+        <link rel='canonical' href='https://globalhospitality.com/job-search' />
+      </Helmet>
 
-      <div className='text-lg leading-relaxed space-y-6'>
-        <p>
-          Global Hospitality focuses exclusively on C-level, senior, and middle management positions
-          within the hospitality industry. With offices in Toronto and Los Angeles, each conducting
-          independent searches, our opportunities change frequently.
-        </p>
-        <p>
-          We do not post all openings online—especially senior roles—due to confidentiality. If you
-          are interested in exploring a career opportunity, we encourage you to submit your resume
-          for consideration.
-        </p>
-        <p className='font-medium text-brand'>
-          Below is a representative list of positions we regularly recruit for:
-        </p>
-      </div>
+      <section aria-labelledby='positions-heading'>
+        <h1
+          id='positions-heading'
+          className='text-4xl font-heading font-bold text-brand-primary mb-10 text-center'>
+          Positions We Recruit
+        </h1>
 
-      <div className='mt-10 space-y-10'>
-        {jobCategories.map((cat, index) => (
-          <div key={index}>
-            <h2 className='text-2xl font-semibold text-brand mb-2'>{cat.title}</h2>
-            <ul className='list-disc list-inside text-sm text-gray-700 space-y-1'>
-              {cat.roles.map((role, i) => (
-                <li key={i}>{role}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+        <div className='text-lg leading-relaxed space-y-6'>
+          <p>
+            Global Hospitality is a specialized executive search firm focused solely on the
+            hospitality industry. From C-level executives to departmental directors, we recruit top
+            talent for hotels, resorts, clubs, restaurants, casinos, and more.
+          </p>
+          <p>
+            With offices in Los Angeles and Toronto, we conduct confidential searches for a wide
+            range of management and leadership roles. Many high-level positions are never publicly
+            posted to ensure discretion.
+          </p>
+          <p className='font-medium text-brand-primary'>
+            The following list includes examples of positions we regularly recruit for:
+          </p>
+        </div>
 
-      <div className='mt-16 border-t pt-10'>
-        <blockquote className='italic text-gray-600 text-center max-w-3xl mx-auto'>
-          “The Briars acquired an Executive Chef through Global Hospitality Search. It was necessary
-          for their representatives to go and seek the appropriate candidate on our behalf. We have
-          been most satisfied with the results. We would like to mention the transaction was handled
-          with integrity and fairness, and we will certainly use this company’s services in the
-          future.”
-        </blockquote>
-        <p className='text-center mt-4 font-medium'>– Barbara S.</p>
-      </div>
+        <div className='mt-10 space-y-10'>
+          {jobCategories.map((cat, index) => (
+            <div key={index}>
+              <h2 className='text-2xl font-semibold text-brand-primary mb-2'>{cat.title}</h2>
+              <ul className='list-disc list-inside text-sm text-gray-700 space-y-1'>
+                {cat.roles.map((role, i) => (
+                  <li key={i}>{role}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
 
-      <div className='flex justify-center gap-4 mt-12'>
-        <Link
-          to='/proposal'
-          className='bg-brand text-white px-6 py-3 rounded-full hover:bg-brand/80 transition'>
-          Request for Proposal
-        </Link>
-        <Link
-          to='/contact'
-          className='border border-brand text-brand px-6 py-3 rounded-full hover:bg-brand hover:text-white transition'>
-          Contact Us
-        </Link>
-      </div>
-    </section>
+        <div className='mt-16 border-t pt-10 text-center'>
+          <blockquote className='italic text-gray-600 max-w-3xl mx-auto'>
+            “The Briars acquired an Executive Chef through Global Hospitality Search. It was
+            necessary for their representatives to go and seek the appropriate candidate on our
+            behalf. We have been most satisfied with the results. We would like to mention the
+            transaction was handled with integrity and fairness, and we will certainly use this
+            company’s services in the future.”
+          </blockquote>
+          <p className='mt-4 font-medium'>– Barbara S.</p>
+        </div>
+
+        <div className='flex justify-center gap-4 mt-12'>
+          <Link
+            to='/proposal'
+            className='bg-brand-primary text-white px-6 py-3 rounded-full hover:bg-brand-primary/80 transition'>
+            Request for Proposal
+          </Link>
+          <Link
+            to='/contact'
+            className='border border-brand-primary text-brand-primary px-6 py-3 rounded-full hover:bg-brand-primary hover:text-white transition'>
+            Contact Us
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }
+
 export default JobSearch;

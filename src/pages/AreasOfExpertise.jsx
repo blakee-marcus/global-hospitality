@@ -1,86 +1,125 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const areas = [
   {
     title: 'Hotels & Resorts',
+    path: '/hotels-resorts',
     description:
-      'A hallmark of Global’s strength is the network of relationships built with hotel operators worldwide. Our recruiters, many with experience in luxury properties and hotel management, place leaders in roles like General Manager, Director of Sales, and Financial Controller.',
+      'A hallmark of Global Hospitality’s strength is the network of relationships built with hotel operators worldwide. Our recruiters, many with experience in luxury hotel management, place leaders in roles like General Manager, Director of Sales, and Financial Controller.',
   },
   {
     title: 'Restaurants',
+    path: '/restaurants',
     description:
-      'Global Hospitality works with leading restaurant groups to place front and back-of-house talent. From Executive Chefs to VPs of Operations, our network covers fine dining, chains, and independent concepts.',
+      'We work with top restaurant groups to place back-of-house and front-of-house executives. From Executive Chefs to VPs of Operations, we support fine dining, casual chains, and independent concepts.',
   },
   {
     title: 'Clubs',
+    path: '/clubs',
     description:
-      'We’ve conducted executive searches for top-tier private clubs—country, city, and golf—focusing on governance, operations, and member experience. Positions include General Manager, Executive Chef, Membership Director, and more.',
+      'From private golf and country clubs to yacht and city clubs, we recruit General Managers, Executive Chefs, Membership Directors, and operations leaders who understand member-first service.',
   },
   {
     title: 'Campus Dining and Campus Services',
+    path: '/campus-dining-and-campus-services',
     description:
-      'We support educational institutions with comprehensive recruitment for dining and campus service leadership roles including Auxiliary Services, Dining Directors, Catering, and Facilities Management.',
+      'We support educational institutions with recruitment for Auxiliary Services, Dining Directors, Catering leadership, and Facilities Management, ensuring smooth and student-focused operations.',
   },
   {
     title: 'Spas',
+    path: '/spas',
     description:
-      'From luxury resort spas to wellness retreats, we recruit Spa Directors and professionals who drive guest satisfaction, retail success, and health-forward innovation in spa experiences.',
+      'Our spa and wellness search practice places Spa Directors, Retail Managers, and treatment experts in five-star resorts, urban retreats, and destination spas around the world.',
   },
   {
     title: 'Food Services',
+    path: '/food-services',
     description:
-      'Serving high-volume and contract operations—arenas, convention centers, institutions—we place executive talent with deep experience in catering, logistics, and operational efficiency.',
+      'For high-volume catering operations and service contractors in stadiums, convention centers, and institutions, we deliver operational leaders with deep logistics and production expertise.',
   },
   {
     title: 'Casinos',
+    path: '/casinos',
     description:
-      'Our casino searches include tribal, riverboat, and resort properties. We understand the unique culture, entertainment focus, and leadership styles needed in this vibrant sector.',
+      'Global Hospitality places executives in tribal, riverboat, and resort casinos, where hospitality, gaming, entertainment, and compliance intersect.',
   },
   {
     title: 'Private Service',
+    path: '/private-service',
     description:
-      'From personal chefs to estate managers, we match discerning households with discreet, qualified professionals. Our approach is confidential, customized, and always client-focused.',
+      'We match high-net-worth households with Estate Managers, Personal Chefs, Butlers, and Housekeepers through a confidential, relationship-driven process.',
   },
   {
     title: 'Senior Living',
+    path: '/senior-living',
     description:
-      'We help build compassionate and capable senior living teams—from General Managers to Culinary and Wellness Directors—bringing hospitality expertise to this growing care sector.',
+      'We help senior living providers recruit General Managers, Culinary Directors, and Wellness leaders who bring compassion and hospitality excellence to residential care.',
   },
   {
     title: 'Food & Beverage Production',
+    path: '/food-beverage-production-recruitment',
     description:
-      'We support supply chain operations with placement of executives in food & beverage manufacturing, logistics, and technical innovation roles.',
+      'We recruit executives in food manufacturing, logistics, operations, and innovation, supporting supply chain success from production to distribution.',
   },
 ];
 
 function AreaOfExpertise() {
   return (
-    <section className='bg-white text-gray-800 px-6 py-20 max-w-6xl mx-auto'>
-      <h1 className='text-4xl font-serif font-bold text-brand mb-12 text-center'>
-        Areas of Expertise
+    <main className='bg-white text-gray-800 px-6 py-20 max-w-6xl mx-auto font-body'>
+      <Helmet>
+        <title>Hospitality Executive Search by Sector | Global Hospitality</title>
+        <meta
+          name='description'
+          content='Explore the hospitality sectors we serve including hotels, restaurants, senior living, spas, casinos, and more. Global Hospitality recruits experienced executives for leadership roles across hospitality.'
+        />
+        <meta
+          name='keywords'
+          content='hospitality executive search, hotel recruitment, restaurant executive hiring, spa recruitment agency, casino staffing, campus dining recruiting, private service staffing'
+        />
+        <meta property='og:title' content='Hospitality Executive Search by Sector' />
+        <meta
+          property='og:description'
+          content='Learn about the industries served by Global Hospitality including hotels, restaurants, senior living, spas, and private clubs.'
+        />
+        <meta
+          property='og:url'
+          content='https://globalhospitality.com/category/area-of-expertise'
+        />
+        <link rel='canonical' href='https://globalhospitality.com/category/area-of-expertise' />
+      </Helmet>
+
+      <h1 className='text-4xl font-serif font-bold text-brand-primary mb-12 text-center'>
+        Areas of Expertise in Hospitality Recruitment
       </h1>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
-        {areas.map((area, index) => (
-          <div
+      <section className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+        {areas.map(({ title, description, path }, index) => (
+          <article
             key={index}
             className='bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition'>
-            <h2 className='text-xl font-semibold mb-2'>{area.title}</h2>
-            <p className='text-gray-700 text-sm leading-relaxed'>{area.description}</p>
-          </div>
+            <h2 className='text-xl font-semibold mb-2'>{title}</h2>
+            <p className='text-gray-700 text-sm leading-relaxed mb-3'>{description}</p>
+            <Link
+              to={path}
+              className='text-brand-primary font-medium text-sm hover:underline'
+              aria-label={`Learn more about executive recruitment for ${title}`}>
+              Learn more »
+            </Link>
+          </article>
         ))}
-      </div>
+      </section>
 
-      <div className='mt-16 border-t pt-10'>
-        <blockquote className='italic text-gray-600 text-center max-w-3xl mx-auto'>
+      <section className='mt-16 border-t pt-10 text-center'>
+        <blockquote className='italic text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed'>
           “I LOVE Aimee! She and I think so much alike that I think we must be related. I dread it
           when I will probably get that envelope telling me what a great time she has had working
           for me BUT … time to move on. My first call will be to you for sure!”
         </blockquote>
-        <p className='text-center mt-4 font-medium'>– Shirlee G.</p>
-      </div>
-    </section>
+        <p className='mt-4 font-medium'>– Shirlee G.</p>
+      </section>
+    </main>
   );
 }
 

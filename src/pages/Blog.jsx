@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const blogPosts = [
@@ -62,34 +63,63 @@ const blogPosts = [
 
 function Blog() {
   return (
-    <section className='bg-white text-gray-800 px-6 py-20 max-w-5xl mx-auto'>
-      <h1 className='text-4xl font-serif font-bold text-brand mb-10 text-center'>
-        Global Hospitality Blog
-      </h1>
+    <main className='bg-white text-gray-800 px-6 py-20 max-w-5xl mx-auto font-body'>
+      <Helmet>
+        <title>Hospitality Recruitment Insights & Career Advice | Global Hospitality Blog</title>
+        <meta
+          name='description'
+          content='Stay updated with the latest hiring trends, resume tips, and executive recruitment insights from the Global Hospitality team. Learn how to land top roles in hospitality.'
+        />
+        <meta
+          name='keywords'
+          content='hospitality blog, executive search tips, resume tips, hotel management hiring, restaurant recruiting, global hospitality careers'
+        />
+        <meta property='og:title' content='Global Hospitality Blog | Insights & Recruitment Tips' />
+        <meta
+          property='og:description'
+          content='Explore our blog for expert career advice, interview tips, and insights into hospitality recruitment.'
+        />
+        <meta property='og:url' content='https://globalhospitality.com/blog' />
+        <link rel='canonical' href='https://globalhospitality.com/blog' />
+      </Helmet>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+      <header className='text-center mb-10'>
+        <h1 className='text-4xl font-serif font-bold text-brand mb-4'>Global Hospitality Blog</h1>
+        <p className='text-lg text-gray-700'>
+          Thought leadership, recruitment tips, and hiring insights for hospitality professionals.
+        </p>
+      </header>
+
+      <section className='grid grid-cols-1 md:grid-cols-2 gap-8'>
         {blogPosts.map((post, index) => (
-          <div
+          <article
             key={index}
             className='bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition'>
             <h2 className='text-xl font-semibold mb-2'>{post.title}</h2>
-            {post.author && <p className='text-sm text-gray-600 mb-2 italic'>{post.author}</p>}
+            {post.author && (
+              <p className='text-sm text-gray-600 mb-2 italic' aria-label='Author of the article'>
+                {post.author}
+              </p>
+            )}
             <p className='text-gray-700 text-sm mb-4'>{post.excerpt}...</p>
-            <Link to={post.path} className='text-brand font-medium hover:underline'>
+            <Link
+              to={post.path}
+              className='text-brand font-medium hover:underline'
+              aria-label={`Read full blog post: ${post.title}`}>
               Read More »
             </Link>
-          </div>
+          </article>
         ))}
-      </div>
+      </section>
 
-      <div className='mt-16 border-t pt-10'>
-        <blockquote className='italic text-gray-600 text-center max-w-3xl mx-auto'>
+      <section className='mt-16 border-t pt-10 text-center'>
+        <blockquote className='italic text-gray-600 max-w-3xl mx-auto'>
           “Global Hospitality has been an excellent partner in building our management team. Working
           with Brian Marcus made the process smooth and efficient, and ultimately, we got an
           outstanding General Manager at a time when skilled talent was very difficult to find.”
         </blockquote>
-        <p className='text-center mt-4 font-medium'>– Gillian</p>
-      </div>
+        <p className='mt-4 font-medium'>– Gillian</p>
+      </section>
 
       <div className='flex justify-center gap-4 mt-12'>
         <Link
@@ -103,7 +133,7 @@ function Blog() {
           Contact Us
         </Link>
       </div>
-    </section>
+    </main>
   );
 }
 

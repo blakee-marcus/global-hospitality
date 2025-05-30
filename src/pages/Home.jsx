@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 
 const industries = [
@@ -7,65 +8,110 @@ const industries = [
     title: 'Hotels & Resorts',
     description:
       'We partner with luxury and boutique hotel brands to recruit seasoned executives and management talent worldwide.',
-    path: '/category/hotels-resorts',
+    path: '/hotels-resorts',
   },
   {
     title: 'Restaurants',
     description:
-      'From fine dining to emerging concepts, we provide strategic hiring solutions for restaurants seeking top-tier leadership.',
-    path: '/category/restaurants',
+      'From fine dining to fast-casual concepts, we provide restaurant executive recruitment services tailored to your brand.',
+    path: '/restaurants',
   },
   {
     title: 'Clubs',
-    description:
-      'Trusted by North America’s most exclusive clubs for executive and departmental hiring.',
-    path: '/category/clubs',
+    description: 'Executive search for private golf, yacht, and city clubs across North America.',
+    path: '/clubs',
   },
   {
     title: 'Campus Dining & Services',
     description:
-      'We bring decades of expertise in staffing for campus and institutional food services.',
-    path: '/category/campus',
+      'Recruiting experienced leaders for institutional and campus food service operations.',
+    path: '/campus-dining-and-campus-services',
   },
   {
     title: 'Spas',
-    description:
-      'Providing luxury spa talent to five-star resorts and hospitality groups across the globe.',
-    path: '/category/spas',
+    description: 'Spa and wellness leadership recruitment for luxury resorts and hotels worldwide.',
+    path: '/spas',
   },
   {
     title: 'Food Services',
     description:
-      'Our clients include cultural centers, stadiums, and service providers seeking operational excellence.',
-    path: '/category/food-services',
+      'Strategic hiring for stadiums, cultural centers, and contract-managed food service programs.',
+    path: '/food-services',
   },
   {
     title: 'Casinos',
-    description: 'Serving executive recruitment needs in high-profile and regional casinos.',
-    path: '/category/casinos',
+    description: 'Providing casino operations with top-tier hospitality and gaming executives.',
+    path: '/casinos',
   },
   {
     title: 'Private Service',
-    description: 'Discreet and professional staffing for elite residences and private estates.',
-    path: '/category/private-service',
+    description:
+      'Confidential staffing for luxury estates and private residences across the globe.',
+    path: '/private-service',
   },
   {
     title: 'Senior Living',
     description:
-      'Supporting senior living communities with compassionate and qualified leadership talent.',
-    path: '/category/senior-living',
+      'Recruiting compassionate leadership for independent and assisted living communities.',
+    path: '/senior-living',
   },
   {
     title: 'Food & Beverage Production',
     description:
-      'Strategic hires for production facilities supporting food and beverage supply chains.',
-    path: '/category/food-beverage',
+      'Staffing food and beverage production facilities with operations and supply chain talent.',
+    path: '/food-beverage-production-recruitment',
   },
 ];
 
 const Home = () => {
   return (
-    <div className='text-gray-800'>
+    <main className='font-body text-neutral-800'>
+      <Helmet>
+        <title>Global Hospitality | Executive Search Firm for Hotels, Restaurants & More</title>
+        <meta
+          name='description'
+          content='Global Hospitality is a worldwide executive search firm specializing in hospitality recruitment for hotels, restaurants, spas, casinos, and more.'
+        />
+        <meta
+          name='keywords'
+          content='hospitality recruitment, executive search firm, hotel recruiting, restaurant executive search, casino staffing, senior living hiring'
+        />
+        <meta property='og:title' content='Global Hospitality | Executive Search & Recruitment' />
+        <meta
+          property='og:description'
+          content='Global Hospitality specializes in recruiting leaders for the hospitality industry including hotels, restaurants, casinos, and more.'
+        />
+        <meta property='og:url' content='https://globalhospitality.com/' />
+        <link rel='canonical' href='https://globalhospitality.com/' />
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Global Hospitality',
+              url: 'https://globalhospitality.com',
+              logo: 'https://globalhospitality.com/logo.png',
+              description:
+                'Global Hospitality is an international executive search firm specializing in recruitment for hotels, restaurants, clubs, and luxury hospitality operations worldwide.',
+              sameAs: ['https://www.linkedin.com/company/globalhospitality'],
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Los Angeles',
+                addressRegion: 'CA',
+                addressCountry: 'US',
+              },
+              contactPoint: {
+                '@type': 'ContactPoint',
+                telephone: '+1-310-123-4567',
+                contactType: 'customer service',
+                areaServed: 'Worldwide',
+              },
+            }),
+          }}
+        />
+      </Helmet>
+
       {/* Hero Section */}
       <section className='bg-white text-center py-24 px-6'>
         <motion.h2
@@ -81,13 +127,13 @@ const Home = () => {
           Global Hospitality
         </motion.h1>
         <p className='max-w-2xl mx-auto text-lg leading-relaxed'>
-          A premier executive search firm with a global reach, specializing in hospitality
-          leadership placements that drive excellence.
+          A premier international executive search firm with deep expertise in placing leaders
+          across hospitality sectors—hotels, restaurants, senior living, and more.
         </p>
         <div className='flex justify-center gap-4 mt-10'>
           <Link
             to='/proposal'
-            className='bg-brand text-white px-6 py-3 rounded-full hover:bg-brand/80 transition'>
+            className='bg-brand-primary text-white px-6 py-3 rounded-full hover:bg-brand/80 transition'>
             Request a Proposal
           </Link>
           <Link
@@ -98,7 +144,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Industries Grid */}
+      {/* Industries Section */}
       <section className='bg-gray-50 py-20 px-6'>
         <div className='max-w-6xl mx-auto'>
           <h2 className='text-3xl font-serif font-semibold text-center mb-12 text-brand'>
@@ -106,16 +152,19 @@ const Home = () => {
           </h2>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {industries.map(({ title, description, path }) => (
-              <motion.div
+              <motion.article
                 key={title}
                 className='bg-white p-6 rounded-2xl shadow-sm border hover:shadow-md transition'
                 whileHover={{ scale: 1.01 }}>
                 <h3 className='text-lg font-bold mb-2'>{title}</h3>
                 <p className='text-sm text-gray-600 mb-4 leading-relaxed'>{description}</p>
-                <Link to={path} className='text-brand font-medium hover:underline'>
+                <Link
+                  to={path}
+                  className='text-brand font-medium hover:underline'
+                  aria-label={`Learn more about our work in ${title}`}>
                   Learn More »
                 </Link>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -133,7 +182,7 @@ const Home = () => {
           <p className='mt-6 font-semibold text-gray-700'>– Harry O.</p>
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 
